@@ -2,6 +2,7 @@ import csv
 import argparse
 import numpy as np
 import matplotlib.pyplot as plt
+from CORE.maths import *
 
 parser = argparse.ArgumentParser()
 parser.add_argument("dataset", type=str, help="input dataset")
@@ -19,16 +20,16 @@ def describe(filename):
       data = data[~np.isnan(data)]
       if not data.any():
         raise Exception()
-      print(f'{maths.count_(data):>12.4f}', end=' |')
-      print(f'{maths.mean_(data):>12.4f}', end=' |')
-      print(f'{maths.std_(data):>12.4f}', end=' |')
-      print(f'{maths.min_(data):>12.4f}', end=' |')
-      print(f'{maths.percentile_(data, 25):>12.4f}', end=' |')
-      print(f'{maths.percentile_(data, 50):>12.4f}', end=' |')
-      print(f'{maths.percentile_(data, 75):>12.4f}', end=' |')
-      print(f'{maths.max_(data):>12.4f}')
+      print(f'{count_(data):>12.4f}', end=' |')
+      print(f'{mean_(data):>12.4f}', end=' |')
+      print(f'{std_(data):>12.4f}', end=' |')
+      print(f'{min_(data):>12.4f}', end=' |')
+      print(f'{percentile_(data, 25):>12.4f}', end=' |')
+      print(f'{percentile_(data, 50):>12.4f}', end=' |')
+      print(f'{percentile_(data, 75):>12.4f}', end=' |')
+      print(f'{max_(data):>12.4f}')
     except:
-      print(f'{maths.count_(dataset[:, i]):>12.4f}', end=' |')
+      print(f'{count_(dataset[:, i]):>12.4f}', end=' |')
       print(f'{"No numerical value to display":>60}')
 
 def load_csv(filename):
