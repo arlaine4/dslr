@@ -1,9 +1,7 @@
 import csv
 import argparse
 import numpy as np
-import matplotlib
 import matplotlib.pyplot as plt
-import maths
 
 parser = argparse.ArgumentParser()
 parser.add_argument("dataset", type=str, help="input dataset")
