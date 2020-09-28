@@ -27,7 +27,7 @@ def xavier_init(X):
 
 def cost(X, y, theta):
     """Fonction de calcul de cout (ou loss)"""
-	return ((-1 / X.shape[0]) * np.sum(y * np.log(predict(X, theta)) + (1 - y) * np.log(1 - predict(X, theta))))
+    return ((-1 / X.shape[0]) * np.sum(y * np.log(predict(X, theta)) + (1 - y) * np.log(1 - predict(X, theta))))
 
 def new_value_for_alpha(alpha, loop):
     """Ajustement du learning rate"""
@@ -46,11 +46,12 @@ def calcul_thetas_house(X, y, house):
     y = np.array(y)
     theta = xavier_init(X)
     for loop in range(3000):
+        print("theta : {}\talpha : {}\tnp.dot_predict : {}".format(theta, alpha, np.dot((predict(X, theta) - y), X)))
         theta = theta - alpha * (1 / m) * (np.dot((predict(X, theta) - y), X))
         costs.append(cost(X, y, theta))
         alpha = new_value_for_alpha(alpha, loop)
     x = np.arange(len(costs))
-    print_plot_houses_LogReg(x, costs, house)
+    #print_plot_houses_LogReg(x, costs, house)
     return theta
 
 def Logistic_Regression(X, y):
