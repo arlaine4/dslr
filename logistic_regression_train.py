@@ -24,12 +24,35 @@ def rework_dataset(dataset):
     dataset = dataset.drop('Potions', axis=1)
     return dataset, y
 
+def xavier_init(X):
+    return np.random.randn(X.shape[1]) * np.sqrt(1 / X.shape[1])
+
+def cost(X, y, theta):
+	return ((-1 / X.shape[0]) * np.sum(y * np.log(predict(X, theta)) + (1 - y) * np.log(1 - predict(X, theta))))
+
+def new_value_for_alpha(alpha, loop):
+    return (1 / (1 + alpha * loop))
+
+def predict(X, theta):
+    z = np.dot(X, theta)
+    sig = 1 / (1 + np.exp(-z))
+    return sig
+
 def calcul_thetas_house(X, y, house):
+    print(y)
     alpha = 1
+    costs = []
     m = float(len(X))
     y = np.array(y)
-    print(y)
-    theta = X
+    theta = xavier_init(X)
+    for loop in range(3000):
+        theta = theta - alpha * (1 / m) * (np.dot((predict(X, theta) - y), X))
+        costs.append(cost(X, y, theta))
+        alpha = new_value_for_alpha(alpha, loop)
+    x = np.arange(len(costs))
+    #plt.plot(x, costs)
+    #plt.title("Logistic Regression for {}".format(house))
+    #plt.show()
     return theta
 
 def Logistic_Regression(X, y):
@@ -51,5 +74,5 @@ if __name__ == "__main__":
     X = StandardScaler(X)
     X = np.c_[np.ones(X.shape[0]), X]
     thetas = Logistic_Regression(X, y)
-    #print(X)
-
+    thetas = np.array(thetas)
+    np.savetxt("thetas.csv", thetas.T, delimiter=",", header="Gryffindor,Slytherin,Ravenclaw,Hufflepuff", comments="")
