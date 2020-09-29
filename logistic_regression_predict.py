@@ -18,7 +18,7 @@ options = parser.parse_args()
 
 def predict(X, theta):
     z = np.dot(X, theta)
-    sig = 1 / 1 + np.exp(-z)
+    sig = 1 / (1 + np.exp(-z))
     return sig
 
 if __name__ == "__main__":
