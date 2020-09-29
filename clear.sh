@@ -16,7 +16,7 @@ else
 fi
 
 if [ -f "$HOUSES" ] ; then
-	rm $HOUSES && echo "\033[31;3mhouses.csv deleted ✅\033[0m"
+	rm $HOUSES && echo "\033[32;3mhouses.csv deleted ✅\033[0m"
 else
 	echo "\033[31;3mhouses.csv does not exist ❌\033[0m"
 fi
