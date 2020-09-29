@@ -36,6 +36,7 @@ def scatter_plot(x, y, legend, x_label, y_label):
     plt.scatter(x[856:1299], y[856:1299], color='blue', alpha=0.5)
     plt.scatter(x[1299:], y[1299:], color='green', alpha=0.5)
     plt.legend(legend, loc='upper right', frameon=True)
+    plt.title("Similar features")
     plt.xlabel(x_label)
     plt.ylabel(y_label)
     plt.show()
