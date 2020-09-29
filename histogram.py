@@ -1,5 +1,6 @@
 import describe
 import numpy as np
+import pandas as pd
 import argparse
 from CORE.core_graphs import print_histogram
 
@@ -8,7 +9,7 @@ from CORE.core_graphs import print_histogram
 
 parser = argparse.ArgumentParser()
 parser.add_argument("dataset", type=str, help='input dataset')
-option = parser.parse_args()
+options = parser.parse_args()
 
 #
 #-----------------------------------------------------------------
@@ -17,12 +18,8 @@ if __name__ == "__main__":
     #-----------------------------------------------------------------
     # Preparation de la data
 
-    data = describe.load_csv(option.dataset)
-    data = data[1:, :]
-    data = data[data[:, 1].argsort()]
-    data = np.array(data[:, 16], dtype=float)
-    legend = ['Gryffindor', 'Hufflepuff', 'Ravenclaw', 'Slytherin']
-
+    dataset = pd.read_csv(options.dataset)
+    gradedata = dataset[dataset.columns[6:19]]
     #
     #-----------------------------------------------------------------
-    print_histogram(data, legend, "Marks", "Number of students")
+    print_histogram(dataset, dataset[gradedata.columns.values])
