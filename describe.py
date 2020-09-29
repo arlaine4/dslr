@@ -4,11 +4,18 @@ import numpy as np
 import matplotlib.pyplot as plt
 from CORE.maths import *
 
+#----------------------------------------------------------------------
+# Initialisation du parseur d'arguments
+
 parser = argparse.ArgumentParser()
 parser.add_argument("dataset", type=str, help="input dataset")
 args = parser.parse_args()
 
+#
+#-----------------------------------------------------------------
+
 def describe(filename):
+  """Fonction affichage du tableau de donnee pour describe.py"""
   dataset = load_csv(filename)
   features = dataset[0]
   dataset = dataset[1:, :]
@@ -33,6 +40,7 @@ def describe(filename):
       print(f'{"No numerical value to display":>60}')
 
 def load_csv(filename):
+  """Chargement de la data depuis le csv"""
   dataset = list()
   with open(filename) as csvfile:
     reader = csv.reader(csvfile)

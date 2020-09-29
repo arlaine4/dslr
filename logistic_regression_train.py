@@ -46,7 +46,7 @@ def calcul_thetas_house(X, y, house):
     y = np.array(y)
     theta = xavier_init(X)
     for loop in range(3000):
-        print("theta : {}\talpha : {}\tnp.dot_predict : {}".format(theta, alpha, np.dot((predict(X, theta) - y), X)))
+        #print("theta : {}\talpha : {}\tnp.dot_predict : {}".format(theta, alpha, np.dot((predict(X, theta) - y), X)))
         theta = theta - alpha * (1 / m) * (np.dot((predict(X, theta) - y), X))
         costs.append(cost(X, y, theta))
         alpha = new_value_for_alpha(alpha, loop)
