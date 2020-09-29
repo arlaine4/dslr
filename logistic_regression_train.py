@@ -2,6 +2,7 @@ import matplotlib.pyplot as plt
 import pandas as pd
 import numpy as np
 import argparse
+from CORE.maths import mean_matrice_
 from CORE.dataset_logreg import get_dataset_LogReg, print_plot_houses_LogReg
 
 
@@ -17,7 +18,7 @@ options = parser.parse_args()
 
 def StandardScaler(X):
     """Scaling de la data avant la regression logistique"""
-    mean = np.mean(X, axis=0)
+    mean = mean_matrice_(X)
     scale = np.std(X - mean, axis=0)
     return (X - mean) / scale
 
@@ -46,12 +47,11 @@ def calcul_thetas_house(X, y, house):
     y = np.array(y)
     theta = xavier_init(X)
     for loop in range(3000):
-        #print("theta : {}\talpha : {}\tnp.dot_predict : {}".format(theta, alpha, np.dot((predict(X, theta) - y), X)))
         theta = theta - alpha * (1 / m) * (np.dot((predict(X, theta) - y), X))
         costs.append(cost(X, y, theta))
         alpha = new_value_for_alpha(alpha, loop)
     x = np.arange(len(costs))
-    #print_plot_houses_LogReg(x, costs, house)
+    print_plot_houses_LogReg(x, costs, house)
     return theta
 
 def Logistic_Regression(X, y):

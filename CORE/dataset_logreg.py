@@ -4,7 +4,7 @@ import pandas as pd
 def get_dataset_LogReg(dataset):
     """Extraction du dataset et suppression elements useless"""
     dataset = pd.read_csv(dataset)
-    dataset = dataset.fillna(0) ## change the mean dataset.fillna(dataset.mean())
+    dataset = dataset.fillna(0)
     y = dataset['Hogwarts House']
     dataset = dataset[dataset.columns[6:19]]
     dataset = dataset.drop('Astronomy', axis=1)

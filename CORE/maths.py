@@ -1,5 +1,12 @@
 import numpy as np
 
+def mean_matrice_(X):
+    mean_ = np.sum(X, axis=0)
+    mean_ /= 1600
+    mean_ = np.array(mean_)
+    print(mean_)
+    return mean_
+
 def count_(X):
     try:
         X = X.astype('float')
@@ -21,10 +28,12 @@ def std_(X):
     return (total / len(X)) ** 0.5
 
 def min_(X):
-    return min(X)
+    min_ = np.ndarray.min(X)
+    return min_
 
 def max_(X):
-    return max(X)
+    max_ = np.ndarray.max(X)
+    return max_
 
 def percentile_(X, p):
     k = (len(X) - 1) * (p / 100)
