@@ -18,7 +18,8 @@ options = parser.parse_args()
 
 def StandardScaler(X):
     """Scaling de la data avant la regression logistique"""
-    mean = mean_matrice_(X)
+    #mean = mean_matrice_(X)
+    mean = np.mean(X, axis=0)
     scale = np.std(X - mean, axis=0)
     return (X - mean) / scale
 
