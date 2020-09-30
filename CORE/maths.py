@@ -4,7 +4,6 @@ def mean_matrice_(X):
     mean_ = np.sum(X, axis=0)
     mean_ /= 1600
     mean_ = np.array(mean_)
-    print(mean_)
     return mean_
 
 def count_(X):
@@ -28,11 +27,13 @@ def std_(X):
     return (total / len(X)) ** 0.5
 
 def min_(X):
-    min_ = np.ndarray.min(X)
+    X.sort()
+    min_ = X[0]
     return min_
 
 def max_(X):
-    max_ = np.ndarray.max(X)
+    X.sort()
+    max_ = X[len(X) - 1]
     return max_
 
 def percentile_(X, p):

@@ -40,6 +40,6 @@ if __name__ == '__main__':
     score = float(count) / len(truths)
     print("Your score on test set: %.3f" % score)
     if score >= .98:
-        print("Good job! Mc Gonagall congratulates you.")
+        print("Good job! Your score is high enough.")
     else:
         print("Too bad, Mc Gonagall flunked you.")
