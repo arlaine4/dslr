@@ -1,8 +1,6 @@
-import csv
 import argparse
 import numpy as np
 import describe
-import matplotlib.pyplot as plt
 from CORE.core_graphs import scatter_plot
 
 #----------------------------------------------------------------------

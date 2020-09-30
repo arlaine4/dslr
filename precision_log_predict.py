@@ -1,11 +1,4 @@
-"""
-Put these files in the same folder as `houses.csv` and `dataset_truth.csv`.
-Usage:
-    $ python evaluate.py
-"""
-from __future__ import print_function
 import csv
-import sys
 import os.path
 
 
