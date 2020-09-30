@@ -51,7 +51,7 @@ def calcul_thetas_house(X, y, house):
         costs.append(cost(X, y, theta))
         alpha = new_value_for_alpha(alpha, loop)
     x = np.arange(len(costs))
-    #print_plot_houses_LogReg(x, costs, house)
+    print_plot_houses_LogReg(x, costs, house)
     return theta
 
 def Logistic_Regression(X, y):
